@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Driveway</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Driveway</h1>
+    <nav>
+      <a href="#now">Now</a>
+      <a href="#history">History</a>
+      <a href="#vehicles">Known vehicles</a>
+    </nav>
+    <p id="status" class="status">Loading…</p>
+  </header>
+
+  <main>
+    <section id="now" class="view">
+      <h2>In the driveway</h2>
+      <div id="driveway" class="cards"></div>
+    </section>
+
+    <section id="history" class="view" hidden>
+      <h2>Visits</h2>
+      <form id="history-filter" class="filters">
+        <input name="plate" placeholder="Plate" autocomplete="off">
+        <label>From <input name="since" type="date"></label>
+        <label>To <input name="until" type="date"></label>
+        <button>Filter</button>
+        <button type="reset">Clear</button>
+      </form>
+      <table>
+        <thead><tr><th>Plate</th><th>Vehicle</th><th>Arrived</th><th>Last seen</th><th></th></tr></thead>
+        <tbody id="sightings"></tbody>
+      </table>
+      <button id="more" hidden>Load more</button>
+    </section>
+
+    <section id="vehicles" class="view" hidden>
+      <h2>Known vehicles</h2>
+      <form id="vehicle-form" class="vehicle-form">
+        <input name="id" type="hidden">
+        <input name="plate" placeholder="Plate *" required autocomplete="off">
+        <input name="state" placeholder="State" maxlength="2">
+        <input name="year" placeholder="Year" type="number" min="1900" max="2100">
+        <input name="make" placeholder="Make">
+        <input name="model" placeholder="Model">
+        <input name="color" placeholder="Color">
+        <input name="owner" placeholder="Owner">
+        <input name="relationship" placeholder="Relationship (resident, family…)">
+        <input name="notes" placeholder="Notes" class="wide">
+        <div class="wide">
+          <button id="vehicle-save">Add vehicle</button>
+          <button type="button" id="vehicle-cancel" hidden>Cancel</button>
+          <span id="vehicle-error" class="error"></span>
+        </div>
+      </form>
+      <table>
+        <thead><tr><th>Plate</th><th>Vehicle</th><th>Owner</th><th>Relationship</th><th>Notes</th><th></th></tr></thead>
+        <tbody id="vehicle-list"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <dialog id="viewer"><img alt=""><form method="dialog"><button>Close</button></form></dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
